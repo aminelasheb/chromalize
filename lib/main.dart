@@ -1,9 +1,19 @@
 import 'package:chromalize/providers/sendAndreceive.dart';
 import 'package:chromalize/screens/onboding/onboding_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 void main() {
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent, // transparent status bar
+    systemNavigationBarColor: Colors.transparent, // navigation bar color
+  ));
   runApp(const MyApp());
 }
 

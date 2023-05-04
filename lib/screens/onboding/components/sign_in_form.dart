@@ -47,12 +47,17 @@ class _SignInFormState extends State<SignInForm> {
     setState(() {
       light = true;
     });
-     await sendIt() ;
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => const OnbodingScreen2(),
-      ),
-    );
+    Future.delayed(Duration(seconds: 6), () async{
+      // Code to be executed after 10 seconds
+      await sendIt() ;
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => const OnbodingScreen2(),
+        ),
+      );
+    });
+
+
 
   }
 
