@@ -6,14 +6,14 @@ import 'components/animated_btn.dart';
 import 'components/sign_in_dialog.dart';
 import 'package:provider/provider.dart';
 
-class OnbodingScreen2 extends StatefulWidget {
-  const OnbodingScreen2({super.key});
+class ongetImage extends StatefulWidget {
+  const ongetImage({super.key});
 
   @override
-  State<OnbodingScreen2> createState() => _OnbodingScreen2State();
+  State<ongetImage> createState() => _ongetImageState();
 }
 
-class _OnbodingScreen2State extends State<OnbodingScreen2> {
+class _ongetImageState extends State<ongetImage> {
   late RiveAnimationController _btnAnimationController;
   bool filter = true;
 

@@ -8,7 +8,7 @@ import 'package:rive/rive.dart';
 import 'package:provider/provider.dart';
 
 import '../../../providers/sendAndreceive.dart';
-import '../onboding_screen2.dart';
+import '../ongetImage.dart';
 
 class SignInForm extends StatefulWidget {
   const SignInForm({
@@ -52,7 +52,7 @@ class _SignInFormState extends State<SignInForm> {
       await sendIt() ;
       Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (context) => const OnbodingScreen2(),
+          builder: (context) => const ongetImage(),
         ),
       );
     });
