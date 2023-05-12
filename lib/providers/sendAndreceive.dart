@@ -11,21 +11,30 @@ class sendAndreceive extends ChangeNotifier {
   late File imageFile;
 
 
-  Future<dynamic> sendIt() async {
+
+
+
+  Future<String> sendIt() async {
     try {
       FormData formData = new FormData.fromMap(
            {
-        "message":"hello world" ,
         "image": await dio.MultipartFile.fromFile(selectedImage)
       });
-      dio.Response response = await Dio().post('link',
+      dio.Response response = await Dio().post('http://34.130.14.210:8080/core/colorize',
           data: formData,
           options: dio.Options(
-              headers: <String, String>{'Authorization': 'Token xyz'}));
+              headers: <String, String>{}));
+      print(response.statusCode.toString());
+      print(response.data.toString()) ;
+
+      return response.data['url'] ;
+      print(response.data.toString()) ;
       print("succes ");
       pic_is_changing = false;
       selectedImage = "";
     } on DioError catch (e) {
+
+      return "error" ;
       print("fail : ${e.response} ");
     }
   }

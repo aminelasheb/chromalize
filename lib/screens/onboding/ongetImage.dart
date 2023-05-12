@@ -7,7 +7,8 @@ import 'components/sign_in_dialog.dart';
 import 'package:provider/provider.dart';
 
 class ongetImage extends StatefulWidget {
-  const ongetImage({super.key});
+  final String image;
+  ongetImage({required this.image, super.key});
 
   @override
   State<ongetImage> createState() => _ongetImageState();
@@ -104,6 +105,10 @@ class _ongetImageState extends State<ongetImage> {
                             height: MediaQuery.of(context).size.height * 0.28,
                             decoration: BoxDecoration(
                                 color: Colors.grey[300],
+                                image: DecorationImage(
+                                    fit: BoxFit.fill,
+
+                                    image: NetworkImage(widget.image)),
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(20))),
                           ),

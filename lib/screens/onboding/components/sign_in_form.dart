@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:rive/rive.dart';
 import 'package:provider/provider.dart';
@@ -49,12 +50,7 @@ class _SignInFormState extends State<SignInForm> {
     });
     Future.delayed(Duration(seconds: 6), () async{
       // Code to be executed after 10 seconds
-      await sendIt() ;
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => const ongetImage(),
-        ),
-      );
+
     });
 
 
@@ -88,6 +84,22 @@ class _SignInFormState extends State<SignInForm> {
                           .pic_is_changing = true;
                    await   getImage(ImageSource.gallery);
                       lightMethod(context);
+
+                      String aa = await Provider.of<sendAndreceive>(context, listen: false).sendIt() ;
+
+
+                      if (aa!="error") {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) =>  ongetImage(image: aa,),
+                          ),
+                        );
+                      } else
+                      {
+                        Fluttertoast.showToast(
+                          msg: aa,
+                        );
+                      }
                     },
                     child: SizedBox(
                       width: MediaQuery.of(context).size.width * 0.85,
@@ -135,10 +147,13 @@ class _SignInFormState extends State<SignInForm> {
                   ),
                   InkWell(
                     onTap: () {
-                      Provider.of<sendAndreceive>(context, listen: false)
-                          .pic_is_changing = true;
-                      getImage(ImageSource.camera);
-                      lightMethod(context);
+                      // Provider.of<sendAndreceive>(context, listen: false)
+                      //     .pic_is_changing = true;
+                      // getImage(ImageSource.camera);
+                      // lightMethod(context);
+                      Fluttertoast.showToast(
+                          msg: "You can not pick a BlackWhite picture, by your Camera \n",
+                      );
                     },
                     child: SizedBox(
                       width: MediaQuery.of(context).size.width * 0.85,
