@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:rive/rive.dart';
 import '../../providers/sendAndreceive.dart';
 import 'components/animated_btn.dart';
@@ -121,6 +122,9 @@ class _ongetImageState extends State<ongetImage> {
                         text: "Download it, now",
                         btnAnimationController: _btnAnimationController,
                         press: () {
+                          Fluttertoast.showToast(
+                            msg: "Download is not avaible now",
+                          );
                           setState(() {});
                           _btnAnimationController.isActive = true;
                           Future.delayed(
